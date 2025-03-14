@@ -22,22 +22,22 @@ echo "Executando script sql para criação de tabelas"
 sudo mysql -p'urubu100' < script-sql
 
 echo "Criando usuário de insert da API"
-sudo mysql -e "CREATE USER 'techpixInsert'@'localhost' IDENTIFIED BY 'Urubu100';"
+sudo mysql -p'urubu100' -e "CREATE USER IF NOT EXISTS 'techpixInsert'@'localhost' IDENTIFIED BY 'Urubu100';"
 
 echo "Dando permissões para o usuário de insert da API"
-sudo mysql -e "GRANT INSERT ON Techpix.* TO 'techpixInsert'@'localhost';"
+sudo mysql -p'urubu100' -e "GRANT INSERT ON Techpix.* TO 'techpixInsert'@'localhost';"
 
 echo "Salvando permissões"
-sudo mysql -e "FLUSH PRIVILEGES;"
+sudo mysql -p'urubu100' -e "FLUSH PRIVILEGES;"
 
 echo "Criando usuário de select da API"
-sudo mysql -e "CREATE USER 'techpixSelect'@'localhost' IDENTIFIED BY 'Urubu100';"
+sudo mysql -p'urubu100' -e "CREATE USER IF NOT EXISTS 'techpixSelect'@'localhost' IDENTIFIED BY 'Urubu100';"
 
 echo "Dando permissões para o usuário de select da API"
-sudo mysql -e "GRANT SELECT ON Techpix.* TO 'techpixSelect'@'localhost';"
+sudo mysql -p'urubu100' -e "GRANT SELECT ON Techpix.* TO 'techpixSelect'@'localhost';"
 
 echo "Salvando permissões"
-sudo mysql -e "FLUSH PRIVILEGES;"
+sudo mysql -p'urubu100' -e "FLUSH PRIVILEGES;"
 
 echo "Processo concluído com sucesso"
 
